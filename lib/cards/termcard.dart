@@ -31,6 +31,7 @@ class _TermCardState extends State<TermCard> {
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
+                       fontFamily: 'Quicksand',
                       color: Color(0xFF4354b3),
                     ),
                   ),
@@ -46,6 +47,7 @@ class _TermCardState extends State<TermCard> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.black,
+                     fontFamily: 'Quicksand',
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),

@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color(0xFF4354b3),
-        title: Text('Home'),
+        title: Text('Home',style: TextStyle( fontFamily: 'Quicksand',),),
         automaticallyImplyLeading: false,
         elevation: 0,
         actions: [
@@ -49,6 +49,7 @@ class _HomeState extends State<Home> {
       ),
       body: ListView(
         children: [
+          CourseCard(),
           CourseCard(),
           CourseCard(),
           CourseCard(),

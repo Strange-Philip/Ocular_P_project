@@ -63,6 +63,7 @@ class NotesCard extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   color: Colors.black,
+                                   fontFamily: 'Quicksand',
                                   fontSize: 22,
                                   fontWeight: FontWeight.w400,
                                   
@@ -91,6 +92,7 @@ class NotesCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: Colors.black,
+                             fontFamily: 'Quicksand',
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
                             

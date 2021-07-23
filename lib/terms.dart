@@ -15,7 +15,7 @@ class _TermsState extends State<Terms> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color(0xFF4354b3),
-        title: Text('Terms'),
+        title: Text('Terms',style: TextStyle( fontFamily: 'Quicksand',),),
         elevation: 0,
         actions: [
           IconButton(

@@ -15,7 +15,7 @@ class _NotesState extends State<Notes> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color(0xFF4354b3),
-        title: Text('Notes'),
+        title: Text('Notes',style: TextStyle(fontFamily: 'Quicksand',),),
         automaticallyImplyLeading: false,
         elevation: 0,
         actions: [
