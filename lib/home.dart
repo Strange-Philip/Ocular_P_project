@@ -47,13 +47,16 @@ class _HomeState extends State<Home> {
           // SizedBox(width: 10,)
         ],
       ),
-      body: ListView(
-        children: [
-          CourseCard(),
-          CourseCard(),
-          CourseCard(),
-          CourseCard(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: ListView(
+          children: [
+            CourseCard(),
+            CourseCard(),
+            CourseCard(),
+            CourseCard(),
+          ],
+        ),
       ),
     ));
   }

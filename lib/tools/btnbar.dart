@@ -41,7 +41,7 @@ class _BtnNavbarState extends State<BtnNavbar> {
             FluidNavBarIcon(icon: LineIcons.stickyNote,
                 // backgroundColor: Color(0xFF4354b3),
                 extras: {"label": "notes"}),
-            FluidNavBarIcon(icon: LineIcons.questionCircle,
+            FluidNavBarIcon(icon: LineIcons.question,
                 // backgroundColor: Color(0xFF4354b3),
                 extras: {"label": "quiz"}),
             FluidNavBarIcon(icon: LineIcons.bars,

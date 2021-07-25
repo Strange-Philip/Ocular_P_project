@@ -16,7 +16,7 @@ class _SetttingsState extends State<Setttings> {
         centerTitle: true,
         backgroundColor: Color(0xFF4354b3),
         title: Text(
-          'Setttings',
+          'Settings',
           style: TextStyle(
             fontFamily: 'Quicksand',
           ),
@@ -29,7 +29,7 @@ class _SetttingsState extends State<Setttings> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
               child: GFCarousel(
                 autoPlay: true,
                 pagination: true,
@@ -49,14 +49,14 @@ class _SetttingsState extends State<Setttings> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Center(
                           child: Text(
-                            'Laborum amet ex esse cillum ipsum est tempor et dolor cupidatat officia minim aute occaecat. Mollit magna aliqua eu amet cillum dolore. Enim eiusmod et veniam labore magna non mollit qui. Non tempor incididunt ea irure ut amet dolor dolor minim. Et elit in commodo culpa est veniam enim. Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
-                            maxLines: 3,
+                            'Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                            maxLines: 50,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: Colors.white,
                               fontFamily: 'Quicksand',
                               fontSize: 16,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
@@ -76,14 +76,14 @@ class _SetttingsState extends State<Setttings> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Center(
                           child: Text(
-                            'Laborum amet ex esse cillum ipsum est tempor et dolor cupidatat officia minim aute occaecat. Mollit magna aliqua eu amet cillum dolore. Enim eiusmod et veniam labore magna non mollit qui. Non tempor incididunt ea irure ut amet dolor dolor minim. Et elit in commodo culpa est veniam enim. Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
-                            maxLines: 3,
+                            'Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                            maxLines: 50,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: Colors.white,
                               fontFamily: 'Quicksand',
                               fontSize: 16,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
@@ -103,14 +103,14 @@ class _SetttingsState extends State<Setttings> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Center(
                           child: Text(
-                            'Laborum amet ex esse cillum ipsum est tempor et dolor cupidatat officia minim aute occaecat. Mollit magna aliqua eu amet cillum dolore. Enim eiusmod et veniam labore magna non mollit qui. Non tempor incididunt ea irure ut amet dolor dolor minim. Et elit in commodo culpa est veniam enim. Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
-                            maxLines: 3,
+                            'Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                            maxLines: 50,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: Colors.white,
                               fontFamily: 'Quicksand',
                               fontSize: 16,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
@@ -130,14 +130,14 @@ class _SetttingsState extends State<Setttings> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Center(
                           child: Text(
-                            'Laborum amet ex esse cillum ipsum est tempor et dolor cupidatat officia minim aute occaecat. Mollit magna aliqua eu amet cillum dolore. Enim eiusmod et veniam labore magna non mollit qui. Non tempor incididunt ea irure ut amet dolor dolor minim. Et elit in commodo culpa est veniam enim. Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
-                            maxLines: 3,
+                            'Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                            maxLines: 50,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: Colors.white,
                               fontFamily: 'Quicksand',
                               fontSize: 16,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
@@ -157,14 +157,14 @@ class _SetttingsState extends State<Setttings> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Center(
                           child: Text(
-                            'Laborum amet ex esse cillum ipsum est tempor et dolor cupidatat officia minim aute occaecat. Mollit magna aliqua eu amet cillum dolore. Enim eiusmod et veniam labore magna non mollit qui. Non tempor incididunt ea irure ut amet dolor dolor minim. Et elit in commodo culpa est veniam enim. Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
-                            maxLines: 3,
+                            'Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                            maxLines: 50,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: Colors.white,
                               fontFamily: 'Quicksand',
                               fontSize: 16,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
@@ -301,7 +301,6 @@ class _SetttingsState extends State<Setttings> {
                 ),
               ),
             ),
-            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: GestureDetector(
@@ -326,7 +325,7 @@ class _SetttingsState extends State<Setttings> {
                                 borderRadius: BorderRadius.circular(5)),
                             child: Center(
                               child: Icon(
-                                LineIcons.cog,
+                                LineIcons.sun,
                                 color: Colors.white,
                               ),
                             ),
@@ -337,7 +336,7 @@ class _SetttingsState extends State<Setttings> {
                         ),
                         Center(
                           child: Text(
-                            "Settings ",
+                            "Theme",
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 18,
@@ -442,7 +441,7 @@ class _SetttingsState extends State<Setttings> {
                                 borderRadius: BorderRadius.circular(5)),
                             child: Center(
                               child: Icon(
-                                LineIcons.question,
+                                LineIcons.questionCircleAlt,
                                 color: Colors.white,
                               ),
                             ),
@@ -455,11 +454,10 @@ class _SetttingsState extends State<Setttings> {
                           child: Text(
                             "About",
                             style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontFamily: "Quicksand"
-                            ),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontFamily: "Quicksand"),
                           ),
                         ),
                         Spacer(),
