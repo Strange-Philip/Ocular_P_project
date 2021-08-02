@@ -1,8 +1,14 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:native_pdf_view/native_pdf_view.dart';
 import 'package:op_app/cards/coursecards.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TopicPage extends StatefulWidget {
@@ -17,6 +23,34 @@ class _TopicPageState extends State<TopicPage> {
   int pages;
   int indexpage;
   PDFViewController controller;
+  String pathPdf;
+  var pdfController;
+  @override
+  void initState() {
+    pdfController = PdfController(
+      document: PdfDocument.openAsset(widget.topic.pdf),
+    );
+    super.initState();
+  }
+
+  // Future<File> fromAsset(String assets) async {
+  //   Completer<File> completer = Completer();
+
+  //   try {
+  //     var dir = await getLibraryDirectory();
+  //     File file = File("${dir.path}/$assets");
+  //     var data = await rootBundle.load(assets);
+  //     var bytes = data.buffer.asUint8List();
+  //     await file.writeAsBytes(bytes, flush: true);
+  //     completer.complete(file);
+  //   } catch (e) {
+  //     print(e);
+  //     throw Exception('Error parsing assets file');
+  //   }
+
+  //   return completer.future;
+  // }
+
   @override
   Widget build(BuildContext context) {
     String text = "$indexpage of $pages";
@@ -94,33 +128,35 @@ class _TopicPageState extends State<TopicPage> {
                   ],
                 ),
               )
-            : PDFView(
-                filePath: widget.topic.pdf,
-                enableSwipe: true,
-                // swipeHorizontal: true,
-                autoSpacing: false,
-                pageFling: false,
-                onRender: (pages) {
-                  setState(() {
-                    this.pages = pages;
-                  });
-                },
+            : PdfView(
+                controller: pdfController,
+                scrollDirection: Axis.vertical,
+                // filePath: widget.topic.pdf,
+                // enableSwipe: true,
+                // // swipeHorizontal: true,
+                // autoSpacing: false,
+                // pageFling: false,
+                // onRender: (pages) {
+                //   setState(() {
+                //     this.pages = pages;
+                //   });
+                // },
                 // onError: (error) {
                 //   print(error.toString());
                 // },
                 // onPageError: (page, error) {
                 //   print('$page: ${error.toString()}');
                 // },
-                onViewCreated: (controller) {
-                  setState(() {
-                    this.controller = controller;
-                  });
-                },
-                onPageChanged: (indexpage, _) {
-                  setState(() {
-                    this.indexpage = indexpage;
-                  });
-                },
+                // onViewCreated: (controller) {
+                //   setState(() {
+                //     this.controller = controller;
+                //   });
+                // },
+                // onPageChanged: (indexpage, _) {
+                //   setState(() {
+                //     this.indexpage = indexpage;
+                //   });
+                // },
               ),
       ),
     );

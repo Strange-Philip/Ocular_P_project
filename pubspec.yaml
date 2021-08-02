@@ -45,6 +45,7 @@ dependencies:
   provider: ^5.0.0
   easy_dynamic_theme: ^2.2.0
   image_picker: ^0.7.5+2
+  native_pdf_view: ^4.1.0
 
 
 dev_dependencies:
