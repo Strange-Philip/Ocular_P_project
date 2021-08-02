@@ -14,7 +14,9 @@ class NotesCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).pushNamed('noteView', arguments: note.id);
+        },
         child: Container(
           height: 130,
           width: double.infinity,

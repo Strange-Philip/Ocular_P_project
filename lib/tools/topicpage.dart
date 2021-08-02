@@ -1,15 +1,9 @@
-import 'dart:async';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:native_pdf_view/native_pdf_view.dart';
 import 'package:op_app/cards/coursecards.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class TopicPage extends StatefulWidget {
   final Topic topic;
@@ -53,7 +47,6 @@ class _TopicPageState extends State<TopicPage> {
 
   @override
   Widget build(BuildContext context) {
-    String text = "$indexpage of $pages";
     // double progress = indexpage / pages;
 
     // setState(() async {
@@ -67,19 +60,15 @@ class _TopicPageState extends State<TopicPage> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Color(0xFF4354b3),
-          title: Text(
-            widget.topic.pdf == '' ? "" : text,
-            style: TextStyle(
-              fontFamily: 'Quicksand',
-            ),
-          ),
           elevation: 0,
         ),
         floatingActionButton: widget.topic.pdf == ''
             ? SizedBox()
             : FloatingActionButton.extended(
                 backgroundColor: Color(0xFF4354b3),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('noteEdit');
+                },
                 elevation: 0,
                 label: Row(
                   children: [
@@ -130,6 +119,9 @@ class _TopicPageState extends State<TopicPage> {
               )
             : PdfView(
                 controller: pdfController,
+                pageSnapping: false,
+                backgroundDecoration: BoxDecoration(),
+                physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 // filePath: widget.topic.pdf,
                 // enableSwipe: true,
