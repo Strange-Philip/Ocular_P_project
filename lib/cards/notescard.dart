@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:op_app/models/constants.dart';
+import 'package:op_app/models/notes.dart';
 
 class NotesCard extends StatelessWidget {
-
-
-  const NotesCard({Key key,}) : super(key: key);
+  final Note note;
+  const NotesCard({
+    Key key,
+    this.note,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {
-         
-        },
+        onTap: () {},
         child: Container(
           height: 130,
           width: double.infinity,
@@ -27,7 +29,7 @@ class NotesCard extends StatelessWidget {
                 height: 150,
                 width: 5,
                 decoration: BoxDecoration(
-                  color: Color(0xFF4354b3),
+                  color: hexToColor(note.color),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
                       bottomLeft: Radius.circular(10)),
@@ -48,36 +50,30 @@ class NotesCard extends StatelessWidget {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // CircleAvatar(
-                            //   radius: 20,
-                            //   backgroundColor: Color(0xFF4354b3),
-                            // ),
-                            // SizedBox(
-                            //   width: 5,
-                            // ),
                             Container(
-                              width: 130,
+                              width: 250,
                               child: Text(
-                                "Eyelid Notes",
-                                maxLines: 2,
+                                note.title,
+                                maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   color: Colors.black,
-                                   fontFamily: 'Quicksand',
-                                  fontSize: 22,
+                                  fontFamily: 'Quicksand',
+                                  fontSize: 20,
                                   fontWeight: FontWeight.w400,
-                                  
                                 ),
                               ),
                             ),
                             Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 5),
-                              child: Icon(
-                                LineIcons.stickyNote,
-                                color: Color(0xFF4354b3),
-                              ),
-                            )
+                            note.imagePath == null || note.imagePath == ""
+                                ? SizedBox()
+                                : Padding(
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child: Icon(
+                                      LineIcons.image,
+                                      color: Color(0xFF4354b3),
+                                    ),
+                                  )
                           ],
                         ),
                       ),
@@ -87,15 +83,14 @@ class NotesCard extends StatelessWidget {
                       Container(
                         width: 270,
                         child: Text(
-                          'Laborum amet ex esse cillum ipsum est tempor et dolor cupidatat officia minim aute occaecat. Mollit magna aliqua eu amet cillum dolore. Enim eiusmod et veniam labore magna non mollit qui. Non tempor incididunt ea irure ut amet dolor dolor minim. Et elit in commodo culpa est veniam enim. Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                          note.content,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             color: Colors.black,
-                             fontFamily: 'Quicksand',
+                            fontFamily: 'Quicksand',
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            
                           ),
                         ),
                       ),
@@ -118,7 +113,7 @@ class NotesCard extends StatelessWidget {
                       //           color: Colors.green[800],
                       //           fontSize: 16,
                       //           fontWeight: FontWeight.w400,
-                              
+
                       //         ),
                       //       ),
                       //       Spacer(),
@@ -130,7 +125,7 @@ class NotesCard extends StatelessWidget {
                       //           color: Colors.green[800],
                       //           fontSize: 16,
                       //           fontWeight: FontWeight.w400,
-                              
+
                       //         ),
                       //       ),
                       //     ],

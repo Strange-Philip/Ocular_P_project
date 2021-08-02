@@ -1,3 +1,4 @@
+import 'package:animated_splash/animated_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:op_app/onboard.dart';
@@ -25,9 +26,25 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           scaffoldBackgroundColor: Colors.grey[100]),
-      home: intScreen == 0 || intScreen == null
-          ? OnboardingScreen()
-          : BtnNavbar(),
+      home: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(color: Colors.white),
+          child: Center(
+            child: Container(
+              height: 150,
+              width: 250,
+              child: AnimatedSplash(
+                home: intScreen == 0 || intScreen == null
+                    ? OnboardingScreen()
+                    : BtnNavbar(),
+                imagePath: 'images/logo.png',
+                type: AnimatedSplashType.StaticDuration,
+                duration: 3000,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

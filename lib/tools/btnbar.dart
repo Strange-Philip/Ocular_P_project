@@ -21,7 +21,7 @@ class _BtnNavbarState extends State<BtnNavbar> {
         extendBody: true,
         body: _children[_currentIndex],
         bottomNavigationBar: FluidNavBar(
-          // animationFactor: 0.95,
+          animationFactor:1.5,
           onChange: (index) {
             setState(() {
               _currentIndex = index;

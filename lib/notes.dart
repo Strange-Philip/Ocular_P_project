@@ -27,10 +27,10 @@ class _NotesState extends State<Notes> {
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
-          NotesCard(),
-          NotesCard(),
-          NotesCard(),
-          NotesCard(),
+          // NotesCard(),
+          // NotesCard(),
+          // NotesCard(),
+          // NotesCard(),
         ],
       ),
     ));
