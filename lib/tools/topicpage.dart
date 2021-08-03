@@ -7,18 +7,19 @@ import 'package:op_app/cards/coursecards.dart';
 
 class TopicPage extends StatefulWidget {
   final Topic topic;
+  final String path;
 
-  const TopicPage({Key key, this.topic}) : super(key: key);
+  const TopicPage({Key key, this.topic, this.path}) : super(key: key);
   @override
   _TopicPageState createState() => _TopicPageState();
 }
 
 class _TopicPageState extends State<TopicPage> {
-  int pages;
-  int indexpage;
-  PDFViewController controller;
-  String pathPdf;
   var pdfController;
+   int _totalPages = 0;
+  int _currentPage = 0;
+  bool pdfReady = false;
+  PDFViewController _pdfViewController;
   @override
   void initState() {
     pdfController = PdfController(
@@ -27,34 +28,8 @@ class _TopicPageState extends State<TopicPage> {
     super.initState();
   }
 
-  // Future<File> fromAsset(String assets) async {
-  //   Completer<File> completer = Completer();
-
-  //   try {
-  //     var dir = await getLibraryDirectory();
-  //     File file = File("${dir.path}/$assets");
-  //     var data = await rootBundle.load(assets);
-  //     var bytes = data.buffer.asUint8List();
-  //     await file.writeAsBytes(bytes, flush: true);
-  //     completer.complete(file);
-  //   } catch (e) {
-  //     print(e);
-  //     throw Exception('Error parsing assets file');
-  //   }
-
-  //   return completer.future;
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // double progress = indexpage / pages;
-
-    // setState(() async {
-    //   //  progess = widget.topic.progress;
-    //   SharedPreferences prefences = await SharedPreferences.getInstance();
-    //   await prefences.setDouble('topic', progress);
-    // });
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -117,39 +92,44 @@ class _TopicPageState extends State<TopicPage> {
                   ],
                 ),
               )
-            : PdfView(
-                controller: pdfController,
-                pageSnapping: false,
-                backgroundDecoration: BoxDecoration(),
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                // filePath: widget.topic.pdf,
-                // enableSwipe: true,
-                // // swipeHorizontal: true,
-                // autoSpacing: false,
-                // pageFling: false,
-                // onRender: (pages) {
-                //   setState(() {
-                //     this.pages = pages;
-                //   });
-                // },
-                // onError: (error) {
-                //   print(error.toString());
-                // },
-                // onPageError: (page, error) {
-                //   print('$page: ${error.toString()}');
-                // },
-                // onViewCreated: (controller) {
-                //   setState(() {
-                //     this.controller = controller;
-                //   });
-                // },
-                // onPageChanged: (indexpage, _) {
-                //   setState(() {
-                //     this.indexpage = indexpage;
-                //   });
-                // },
-              ),
+            : Stack(
+        children: <Widget>[
+          PDFView(
+            filePath: widget.path,
+            autoSpacing: false,
+            enableSwipe: true,
+            pageSnap: false,
+            onError: (e) {
+              print(e);
+            },
+            onRender: (_pages) {
+              setState(() {
+                _totalPages = _pages;
+                pdfReady = true;
+              });
+            },
+            onViewCreated: (PDFViewController vc) {
+              _pdfViewController = vc;
+            },
+            onPageChanged: (int page, int total) {
+              setState(() {});
+            },
+            onPageError: (page, e) {},
+          ),
+          !pdfReady
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Offstage()
+        ],
+      )
+            // PdfView(
+            //     controller: pdfController,
+            //     pageSnapping: false,
+            //     backgroundDecoration: BoxDecoration(),
+            //     physics: BouncingScrollPhysics(),
+            //     scrollDirection: Axis.vertical,
+            //   ),
       ),
     );
   }

@@ -1,144 +1,125 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:op_app/tools/topicpage.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:path_provider/path_provider.dart';
+
+import '../readtopic.dart';
 
 class Topic {
   final String name;
-  final String summary;
-  final double progress;
+  final String time;
   final String pdf;
+  final Icon icon;
 
-  Topic(this.name, this.summary, this.progress, this.pdf);
+  Topic(this.name, this.time, this.pdf, this.icon);
 }
 
-class CourseCard extends StatelessWidget {
+class CourseCard extends StatefulWidget {
   final Topic topic;
 
   const CourseCard({Key key, this.topic}) : super(key: key);
+
   @override
+  _CourseCardState createState() => _CourseCardState();
+}
+
+class _CourseCardState extends State<CourseCard> {
+  String assetPDFPath = "";
+  @override
+  void initState() {
+    super.initState();
+
+    getFileFromAsset(widget.topic.pdf).then((f) {
+      setState(() {
+        assetPDFPath = f.path;
+        print(assetPDFPath);
+      });
+    });
+  }
+
+  Future<File> getFileFromAsset(String asset) async {
+    try {
+      var data = await rootBundle.load(asset);
+      var bytes = data.buffer.asUint8List();
+      var dir = await getApplicationDocumentsDirectory();
+      File file = File("${dir.path}/mypdf.pdf");
+
+      File assetFile = await file.writeAsBytes(bytes);
+      return assetFile;
+    } catch (e) {
+      throw Exception("Error opening asset file");
+    }
+  }
+
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
       child: GestureDetector(
         onTap: () {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (_) => TopicPage(
-                        topic: topic,
+                  builder: (_) => ReadView(
+                        topic: widget.topic,
                       )));
         },
         child: Container(
-          height: 145,
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+          height: 120,
           width: double.infinity,
           decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(width: 2, color: Color(0xFF4354b3))),
+            color: Color(0xFF4354b3),
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: widget.topic.icon,
+              ),
+              Spacer(),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                child: Text(
+                  widget.topic.name,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'Quicksand',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Container(
-                  height: 30,
-                  width: double.infinity,
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundColor: Color(0xFF4354b3),
-                        child: Icon(
-                          LineIcons.eye,
-                          color: Colors.white,
-                        ),
-                      ),
+                      Icon(LineIcons.clock, color: Colors.white,size: 18),
                       SizedBox(
                         width: 5,
                       ),
-                      Container(
-                        // width: 130,
-                        child: Text(
-                          topic.name,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontFamily: 'Quicksand',
-                            fontWeight: FontWeight.w400,
-                          ),
+                      Text(
+                        widget.topic.time,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Quicksand',
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
-                      Spacer(),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(right: 5),
-                      //   child: Icon(
-                      //     LineIcons.stickyNote,
-                      //     color: Color(0xFF4354b3),
-                      //   ),
-                      // )
                     ],
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Container(
-                  // width: 270,
-                  child: Text(
-                    topic.summary,
-                    maxLines: 4,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Quicksand',
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ),
-              Spacer(),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: LinearPercentIndicator(
-                      width: 200.0,
-                      lineHeight: 7.0,
-                      animation: true,
-                      percent: topic.progress,
-                      animationDuration: 1000,
-                      linearStrokeCap: LinearStrokeCap.roundAll,
-                      backgroundColor: Colors.grey.withOpacity(0.1),
-                      progressColor: Color(0xFF4354b3),
-                    ),
-                  ),
-                  Spacer(),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          color: Color(0xFF4354b3),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(7))),
-                      child: Center(
-                        child: Icon(
-                          LineIcons.angleRight,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              )
             ],
           ),
         ),

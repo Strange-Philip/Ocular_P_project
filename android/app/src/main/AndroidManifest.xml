@@ -2,7 +2,7 @@
     package="com.example.op_app">
    <uses-permission android:name='android.permissions.WAKE_LOCK'/>
    <application
-        android:label="op_app"
+        android:label="Iris"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

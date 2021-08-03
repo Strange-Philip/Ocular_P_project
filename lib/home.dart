@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:op_app/cards/coursecards.dart';
 import 'package:op_app/flashcards.dart';
-import 'package:op_app/terms.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
@@ -10,39 +9,98 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
-  double progress;
-//  SharedPreferences prefences = await SharedPreferences.getInstance();
-//    progress = await prefences.getDouble('topic');
-  List<Topic> topics = [
-    Topic('The Bony Orbit', "Delve into the world of the bony orbit", 0,
-        'images/pdf/BonyOrbit.pdf'),
-    Topic('Cornea And Sclera', "What do you know about the Cornea of the Eye?",
-        0, ''),
-    Topic('Topic 3', "", 0, ''),
-    Topic('Topic 4', "", 0, ''),
-    Topic('Topic 5', "", 0, ''),
-    Topic('Topic 6', "", 0, ''),
-  ];
-  @override
-  // void initState() async {
-  //   super.initState();
-  //   SharedPreferences prefences = await SharedPreferences.getInstance();
-  //   progress = prefences.getDouble('topic');
-  // }
+String greetingMessage() {
+  var timeNow = DateTime.now().hour;
 
+  if (timeNow <= 12) {
+    return 'Good Morning';
+  } else if ((timeNow > 12) && (timeNow <= 16)) {
+    return 'Good Afternoon';
+  } else if ((timeNow > 16) && (timeNow < 20)) {
+    return 'Good Evening';
+  } else {
+    return 'Sweet dreams';
+  }
+}
+
+getname() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getString('loginDetails');
+}
+
+class _HomeState extends State<Home> {
+  String greetingMes = greetingMessage();
+  String name = getname();
+  List<Topic> topics = [
+    Topic(
+        '1. The Bony Orbit',
+        "2 hrs 30 mins",
+        'images/pdf/BonyOrbit.pdf',
+        Icon(
+          LineIcons.brain,
+          color: Colors.white,
+          size: 28,
+        )),
+    Topic(
+        '2. Orbital Contents',
+        "2 hrs 30 mins",
+        'images/pdf/2.OrbitalContent.pdf',
+        Icon(
+          LineIcons.bone,
+          color: Colors.white,
+          size: 28,
+        )),
+    Topic(
+        'Topic 3',
+        "2 hrs 30 mins",
+        '',
+        Icon(
+          LineIcons.eye,
+          color: Colors.white,
+          size: 28,
+        )),
+    Topic(
+        'Topic 4',
+        "2 hrs 30 mins",
+        '',
+        Icon(
+          LineIcons.glasses,
+          color: Colors.white,
+          size: 28,
+        )),
+    Topic(
+        'Topic 5',
+        "2 hrs 30 mins",
+        '',
+        Icon(
+          LineIcons.stethoscope,
+          color: Colors.white,
+          size: 28,
+        )),
+    Topic(
+        'Topic 6',
+        "2 hrs 30 mins",
+        '',
+        Icon(
+          LineIcons.lowVision,
+          color: Colors.white,
+          size: 28,
+        )),
+  ];
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Color(0xFF4354b3),
-        title: Text(
-          'Home',
-          style: TextStyle(
-            fontFamily: 'Quicksand',
-          ),
-        ),
+        backgroundColor: Colors.transparent,
+        // title: Text(
+        //   'Home',
+        //   style: TextStyle(
+        //     fontFamily: 'Quicksand',
+        //   ),
+        // ),
         automaticallyImplyLeading: false,
         elevation: 0,
         actions: [
@@ -55,32 +113,48 @@ class _HomeState extends State<Home> {
             },
             child: Image.asset(
               'images/sticky.png',
-              color: Colors.white,
-              width: 30,
-              height: 30,
+              color: Color(0xFF4354b3),
+              width: 40,
+              height: 40,
             ),
           ),
-          IconButton(
-              icon: Icon(LineIcons.book, color: Colors.white),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (BuildContext context) => Terms()));
-              }),
-          // SizedBox(width: 10,)
+          SizedBox(
+            width: 10,
+          )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(2.0),
-        child: ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount: topics.length,
-            itemBuilder: (context, index) {
-              return CourseCard(
-                topic: topics[index],
-              );
-            }),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+              child: Text(
+                greetingMes + ' $name',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 26,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Quicksand'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Container(
+                height: 140 * topics.length / 1,
+                child: ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: topics.length,
+                    itemBuilder: (context, index) {
+                      return CourseCard(
+                        topic: topics[index],
+                      );
+                    }),
+              ),
+            ),
+          ],
+        ),
       ),
     ));
   }

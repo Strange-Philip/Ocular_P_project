@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:op_app/notes.dart';
 import 'package:op_app/onboard.dart';
-import 'package:op_app/tools/btnbar.dart';
+import 'tools/verify.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'models/notesprovider.dart';
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                   child: AnimatedSplash(
                     home: intScreen == 0 || intScreen == null
                         ? OnboardingScreen()
-                        : BtnNavbar(),
+                        : VerifyUser(),
                     imagePath: 'images/logo.png',
                     type: AnimatedSplashType.StaticDuration,
                     duration: 3000,

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:op_app/tools/btnbar.dart';
+import 'tools/verify.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -105,7 +106,7 @@ class _OnboardingScreen extends State<OnboardingScreen> {
               backgroundColor: Color(0xFF4354b3),
               onPressed: () {
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (_) => BtnNavbar()));
+                    context, MaterialPageRoute(builder: (_) => VerifyUser()));
               },
               elevation: 0,
               label: Row(

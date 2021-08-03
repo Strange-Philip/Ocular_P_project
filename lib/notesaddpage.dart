@@ -11,9 +11,9 @@ import 'models/notes.dart';
 import 'models/notesprovider.dart';
 
 class NoteEditScreen extends StatefulWidget {
-
-
-  const NoteEditScreen({Key key, }) : super(key: key);
+  const NoteEditScreen({
+    Key key,
+  }) : super(key: key);
   @override
   _NoteEditScreenState createState() => _NoteEditScreenState();
 }
@@ -25,6 +25,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
   final contentController = TextEditingController();
   bool firstTime = true;
   Note selectedNote;
+  bool coloron = false;
 
   Color _color = Color(0xFF4354b3);
   var id;
@@ -63,6 +64,13 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
               Navigator.pop(context);
             }),
         actions: [
+          IconButton(
+              icon: Icon(LineIcons.palette, color: _color),
+              onPressed: () {
+                setState(() {
+                  coloron = !coloron;
+                });
+              }),
           IconButton(
               icon: Icon(LineIcons.image, color: Colors.black),
               onPressed: () {
@@ -194,7 +202,6 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
               cursorColor: Color(0xFF4354b3),
               controller: titleController,
               maxLines: null,
-             
               textCapitalization: TextCapitalization.sentences,
               style: TextStyle(
                   fontSize: 30,
@@ -253,6 +260,22 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
                 ],
               ),
             ),
+          coloron == true
+              ? Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2, vertical: 5),
+                  child: Center(
+                    child: FastColorPicker(
+                      selectedColor: _color,
+                      onColorSelected: (color) {
+                        setState(() {
+                          _color = color;
+                          coloron = !coloron;
+                        });
+                      },
+                    ),
+                  ),
+                )
+              : SizedBox(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
             child: TextField(
@@ -284,19 +307,6 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
             SizedBox(
               height: 60,
             ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 2, vertical: 5),
-            child: Center(
-              child: FastColorPicker(
-                selectedColor: _color,
-                onColorSelected: (color) {
-                  setState(() {
-                    _color = color;
-                  });
-                },
-              ),
-            ),
-          ),
         ],
       )),
     ));
@@ -365,7 +375,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
       print('doneNow');
       // Navigator.of(this.context)
       //     .pushReplacementNamed('homepage', arguments: id);
-        Navigator.pop(this.context);
+      Navigator.pop(this.context);
       ScaffoldMessenger.of(this.context).showSnackBar(SnackBar(
         elevation: 0,
         content: const Text('Note Added'),
