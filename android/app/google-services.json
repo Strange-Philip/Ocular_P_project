@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "832893122545",
+    "project_id": "iris-97f18",
+    "storage_bucket": "iris-97f18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832893122545:android:f3373654ba84d62c8e3650",
+        "android_client_info": {
+          "package_name": "com.example.op_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832893122545-a4eacj68eqs2q8ojg2dm4tj1iuj3lor0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz3PJmMbVb1HfYTX3dD4QC9pRdp3l-t2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832893122545-a4eacj68eqs2q8ojg2dm4tj1iuj3lor0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
