@@ -13,7 +13,7 @@ class BtnNavbar extends StatefulWidget {
 
 class _BtnNavbarState extends State<BtnNavbar> {
   int _currentIndex = 0;
-  final List<Widget> _children = [Home(), Notes(), Quiz(), Setttings()];
+  final List<Widget> _children = [Home(), Notes(), QuizOverview(), Setttings()];
   @override
   Widget build(BuildContext context) {
     return SafeArea(

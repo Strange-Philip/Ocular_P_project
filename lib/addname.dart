@@ -11,8 +11,8 @@ class AddName extends StatefulWidget {
 }
 
 class _AddNameState extends State<AddName> {
-  var _formkey = GlobalKey<FormBuilderFieldState>();
-  TextEditingController nameController;
+   final _formkey = GlobalKey<FormBuilderState>();
+   
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,15 +20,18 @@ class _AddNameState extends State<AddName> {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Color(0xFF4354b3),
         onPressed: () async {
-          if (nameController.text != null || nameController.text.isNotEmpty) {
-            print(nameController.text);
+        
+          if (_formkey.currentState.validate()) {
+            _formkey.currentState.save();
+            print(_formkey.currentState.value['name']);
             SharedPreferences prefs = await SharedPreferences.getInstance();
-            prefs.setString('loginDetails', nameController.text);
+            prefs.setString(
+                'name', _formkey.currentState.value['name']);
             prefs.setBool('isLoggin', true);
             Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (_) => BtnNavbar()));
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text('Welcome ${nameController.text}',
+              content: Text('Welcome ${_formkey.currentState.value['name']}',
                   style: TextStyle(
                       fontFamily: 'Quicksand',
                       fontWeight: FontWeight.w500,
@@ -107,7 +110,7 @@ class _AddNameState extends State<AddName> {
               FormBuilder(
                 key: _formkey,
                 child: Padding(
-                  padding: EdgeInsets.all(4.0),
+                  padding: EdgeInsets.all(2.0),
                   child: Row(
                     children: <Widget>[
                       IconButton(
@@ -116,19 +119,17 @@ class _AddNameState extends State<AddName> {
                       ),
                       Expanded(
                         child: Container(
-                            margin: EdgeInsets.only(left: 4, right: 20),
-                            child: FormBuilderTextField(
+                          margin: EdgeInsets.only(left: 4, right: 20),
+                          child: FormBuilderTextField(
                               name: 'name',
-                              controller: nameController,
                               decoration:
                                   InputDecoration(hintText: 'First Name'),
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               keyboardType: TextInputType.text,
-                              validator: (value) => value.isEmpty
-                                  ? 'Please enter new First name'
-                                  : null,
-                            )),
+                              validator: FormBuilderValidators.required(context,
+                                  errorText: "First name is required ")),
+                        ),
                       ),
                     ],
                   ),

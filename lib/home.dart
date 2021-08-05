@@ -23,14 +23,9 @@ String greetingMessage() {
   }
 }
 
-getname() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.getString('loginDetails');
-}
-
 class _HomeState extends State<Home> {
   String greetingMes = greetingMessage();
-  String name = getname();
+  String name;
   List<Topic> topics = [
     Topic(
         '1. The Bony Orbit',
@@ -44,7 +39,7 @@ class _HomeState extends State<Home> {
     Topic(
         '2. Orbital Contents',
         "2 hrs 30 mins",
-        'images/pdf/2.OrbitalContent.pdf',
+        '',
         Icon(
           LineIcons.bone,
           color: Colors.white,
@@ -87,6 +82,20 @@ class _HomeState extends State<Home> {
           size: 28,
         )),
   ];
+  Future<String> getname() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String prefname = prefs.getString('name');
+    print(prefname);
+    return prefname;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getname().then((value) => setState(() {
+          this.name= value;
+        }));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,12 +104,6 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        // title: Text(
-        //   'Home',
-        //   style: TextStyle(
-        //     fontFamily: 'Quicksand',
-        //   ),
-        // ),
         automaticallyImplyLeading: false,
         elevation: 0,
         actions: [
@@ -114,8 +117,8 @@ class _HomeState extends State<Home> {
             child: Image.asset(
               'images/sticky.png',
               color: Color(0xFF4354b3),
-              width: 40,
-              height: 40,
+              width: 35,
+              height: 35,
             ),
           ),
           SizedBox(
@@ -130,7 +133,7 @@ class _HomeState extends State<Home> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
               child: Text(
-                greetingMes + ' $name',
+                greetingMes + ' $name.',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Colors.black,

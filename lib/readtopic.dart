@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:op_app/cards/coursecards.dart';
 
@@ -53,7 +54,38 @@ class _ReadViewState extends State<ReadView> {
                       ],
                     ),
                   ),
-            body: Padding(
+            body:widget.topic.pdf == ''
+            ? Center(
+                child: Column(
+                  children: [
+                    Spacer(),
+                    SvgPicture.asset(
+                      'images/books.svg',
+                      width: 200,
+                      height: 150,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 5),
+                      child: Text(
+                        "Topic not available yet",
+                        maxLines: 5,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                            // color: Colors.black,
+                            fontFamily: 'Quicksand'),
+                      ),
+                    ),
+                    Spacer(),
+                  ],
+                ),
+              )
+            : Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: SingleChildScrollView(
                 child: Column(
