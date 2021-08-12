@@ -102,7 +102,7 @@ class _QuizpageState extends State<Quizpage> {
   bool disableAnswer = false;
   // extra varibale to iterate
   int j = 1;
-  int timer = 30;
+  int timer = 60;
   String showtimer = "60";
   var randomArray;
 
@@ -164,7 +164,7 @@ class _QuizpageState extends State<Quizpage> {
 
   void nextquestion() {
     canceltimer = false;
-    timer = 30;
+    timer = 60;
     setState(() {
       if (j < 10) {
         i = randomArray[j];
@@ -185,7 +185,7 @@ class _QuizpageState extends State<Quizpage> {
 
   void checkanswer(String k) {
     if (mydata[2][i.toString()] == mydata[1][i.toString()][k]) {
-      marks = marks + 5;
+      marks = marks + 1;
 
       colortoshow = right;
     } else {
@@ -198,7 +198,7 @@ class _QuizpageState extends State<Quizpage> {
     });
     // nextquestion();
     // changed timer duration to 1 second
-    Timer(Duration(seconds: 5), nextquestion);
+    Timer(Duration(seconds: 3), nextquestion);
   }
 
   Widget choicebutton(String k) {
@@ -210,7 +210,7 @@ class _QuizpageState extends State<Quizpage> {
         child: GestureDetector(
           onTap: () => checkanswer(k),
           child: Container(
-            width: 200,
+            width: 250,
             padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -284,24 +284,43 @@ class _QuizpageState extends State<Quizpage> {
           ),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Expanded(
-              flex: 3,
-              child: Container(
-                padding: EdgeInsets.all(15.0),
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  mydata[0][i.toString()],
-                  style: TextStyle(
-                    fontSize:26.0,
-                    fontWeight:FontWeight.w500,
-                    fontFamily: "Quicksand",
-                  ),
-                ),
+            Text(
+              mydata[0][i.toString()],
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                fontFamily: 'Quicksand',
               ),
             ),
+            SizedBox(height: 8),
+            Text(
+              'Please Choose an Answer',
+              style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontSize: 18,
+                  fontFamily: 'Quicksand',
+                  fontWeight: FontWeight.w500),
+            ),
+            SizedBox(height: 20),
+            // Expanded(
+            //   flex: 3,
+            //   child: Container(
+            //     padding: EdgeInsets.all(15.0),
+            //     alignment: Alignment.bottomLeft,
+            //     child: Text(
+            //       mydata[0][i.toString()],
+            //       style: TextStyle(
+            //         fontSize:26.0,
+            //         fontWeight:FontWeight.w500,
+            //         fontFamily: "Quicksand",
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Expanded(
-              flex: 6,
+              // flex: 6,
               child: AbsorbPointer(
                 absorbing: disableAnswer,
                 child: Container(
@@ -325,10 +344,12 @@ class _QuizpageState extends State<Quizpage> {
                   child: Text(
                     showtimer,
                     style: TextStyle(
-                      fontSize: 35.0,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Quicksand',
-                    ),
+                        fontSize: 35.0,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Quicksand',
+                        color: int.parse(showtimer) > 10
+                            ? Colors.green
+                            : Colors.red),
                   ),
                 ),
               ),

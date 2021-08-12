@@ -1,13 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/components/carousel/gf_carousel.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:op_app/aboutpage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Setttings extends StatefulWidget {
   @override
   _SetttingsState createState() => _SetttingsState();
 }
 
+void customLaunch(command) async {
+  if (await canLaunch(command)) {
+    await launch(command);
+  } else {
+    print('could not launch $command');
+  }
+}
+
 class _SetttingsState extends State<Setttings> {
+  String name;
+  Future<String> getname() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String prefname = prefs.getString('name');
+    print(prefname);
+    return prefname;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getname().then((value) => setState(() {
+          this.name = value;
+        }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -177,65 +204,14 @@ class _SetttingsState extends State<Setttings> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Center(
-                          child: Container(
-                            height: 35,
-                            width: 35,
-                            decoration: BoxDecoration(
-                                color: Color(0xFF4354b3),
-                                borderRadius: BorderRadius.circular(5)),
-                            child: Center(
-                              child: Icon(
-                                LineIcons.questionCircle,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Center(
-                          child: Text(
-                            "Quizes Taken",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                              fontFamily: 'Quicksand',
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        Spacer(),
-                        Center(
-                          child: Text(
-                            "4",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                              fontFamily: 'Quicksand',
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                      ]),
-                ),
+              child: Text(
+                "general".toUpperCase(),
+                maxLines: 1,
+                style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black38,
+                    fontFamily: 'Quicksand'),
               ),
             ),
             Padding(
@@ -262,7 +238,7 @@ class _SetttingsState extends State<Setttings> {
                                 borderRadius: BorderRadius.circular(5)),
                             child: Center(
                               child: Icon(
-                                LineIcons.book,
+                                LineIcons.user,
                                 color: Colors.white,
                               ),
                             ),
@@ -273,74 +249,11 @@ class _SetttingsState extends State<Setttings> {
                         ),
                         Center(
                           child: Text(
-                            "Topics Competed",
+                            "$name",
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 18,
                               fontFamily: 'Quicksand',
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        Spacer(),
-                        Center(
-                          child: Text(
-                            "4",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                              fontFamily: 'Quicksand',
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                      ]),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Center(
-                          child: Container(
-                            height: 35,
-                            width: 35,
-                            decoration: BoxDecoration(
-                                color: Color(0xFF4354b3),
-                                borderRadius: BorderRadius.circular(5)),
-                            child: Center(
-                              child: Icon(
-                                LineIcons.sun,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Center(
-                          child: Text(
-                            "Theme",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18,
-                              fontFamily: "Quicksand",
                               color: Colors.black,
                             ),
                           ),
@@ -359,10 +272,143 @@ class _SetttingsState extends State<Setttings> {
                 ),
               ),
             ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            //   child: GestureDetector(
+            //     onTap: () {},
+            //     child: Container(
+            //       height: 50,
+            //       decoration: BoxDecoration(
+            //           color: Colors.white,
+            //           borderRadius: BorderRadius.circular(5)),
+            //       child: Row(
+            //           crossAxisAlignment: CrossAxisAlignment.start,
+            //           children: [
+            //             SizedBox(
+            //               width: 10,
+            //             ),
+            //             Center(
+            //               child: Container(
+            //                 height: 35,
+            //                 width: 35,
+            //                 decoration: BoxDecoration(
+            //                     color: Color(0xFF4354b3),
+            //                     borderRadius: BorderRadius.circular(5)),
+            //                 child: Center(
+            //                   child: Icon(
+            //                     LineIcons.sun,
+            //                     color: Colors.white,
+            //                   ),
+            //                 ),
+            //               ),
+            //             ),
+            //             SizedBox(
+            //               width: 10,
+            //             ),
+            //             Center(
+            //               child: Text(
+            //                 "Theme",
+            //                 style: TextStyle(
+            //                   fontWeight: FontWeight.w400,
+            //                   fontSize: 18,
+            //                   fontFamily: "Quicksand",
+            //                   color: Colors.black,
+            //                 ),
+            //               ),
+            //             ),
+            //             Spacer(),
+            //             // Center(
+            //             //   child: Icon(
+            //             //     Icons.arrow_forward_ios,
+            //             //     color: Colors.grey.withOpacity(0.3),
+            //             //   ),
+            //             // ),
+            //             SizedBox(
+            //               width: 20,
+            //             ),
+            //           ]),
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => AboutPage()));
+                },
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Center(
+                          child: Container(
+                            height: 35,
+                            width: 35,
+                            decoration: BoxDecoration(
+                                color: Color(0xFF4354b3),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Center(
+                              child: Icon(
+                                LineIcons.questionCircleAlt,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Center(
+                          child: Text(
+                            "About",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontFamily: "Quicksand"),
+                          ),
+                        ),
+                        Spacer(),
+                        Center(
+                          child: Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.grey.withOpacity(0.3),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                      ]),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: Text(
+                "feedback".toUpperCase(),
+                maxLines: 1,
+                style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black38,
+                    fontFamily: 'Quicksand'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: GestureDetector(
+                onTap: () {
+                  customLaunch(
+                      'mailto:philipabakahmensah@gmail.com?subject=Iris Help&body=');
+                },
                 child: Container(
                   height: 50,
                   decoration: BoxDecoration(
@@ -420,7 +466,10 @@ class _SetttingsState extends State<Setttings> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  customLaunch(
+                      'mailto:philipabakahmensah@gmail.com?subject=Iris Bug&body=');
+                },
                 child: Container(
                   height: 50,
                   decoration: BoxDecoration(
@@ -441,7 +490,7 @@ class _SetttingsState extends State<Setttings> {
                                 borderRadius: BorderRadius.circular(5)),
                             child: Center(
                               child: Icon(
-                                LineIcons.questionCircleAlt,
+                                LineIcons.bug,
                                 color: Colors.white,
                               ),
                             ),
@@ -452,12 +501,74 @@ class _SetttingsState extends State<Setttings> {
                         ),
                         Center(
                           child: Text(
-                            "About",
+                            "Report Bug",
                             style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontFamily: "Quicksand"),
+                              fontWeight: FontWeight.w400,
+                              fontSize: 18,
+                              fontFamily: "Quicksand",
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Spacer(),
+                        Center(
+                          child: Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.grey.withOpacity(0.3),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                      ]),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: GestureDetector(
+                onTap: () {
+                  customLaunch(
+                      'mailto:philipabakahmensah@gmail.com?subject=Iris Feedback&body=');
+                },
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Center(
+                          child: Container(
+                            height: 35,
+                            width: 35,
+                            decoration: BoxDecoration(
+                                color: Color(0xFF4354b3),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Center(
+                              child: Icon(
+                                LineIcons.paperPlane,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Center(
+                          child: Text(
+                            "Send Feedback",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 18,
+                              fontFamily: "Quicksand",
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         Spacer(),

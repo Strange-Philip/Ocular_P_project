@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:line_icons/line_icons.dart';
-
-
 
 class ResultPage extends StatefulWidget {
   final int marks;
@@ -12,9 +11,9 @@ class ResultPage extends StatefulWidget {
 
 class _ResultPageState extends State<ResultPage> {
   List<String> images = [
-    "images/success.png",
-    "images/good.png",
-    "images/bad.png",
+    "images/happy.svg",
+    "images/sad.svg",
+    "images/neutral.svg",
   ];
 
   String message;
@@ -22,21 +21,19 @@ class _ResultPageState extends State<ResultPage> {
 
   @override
   void initState() {
-    if (widget.marks < 20) {
-      image = images[2];
-      message = "You Should Try Hard..\n" + "You Scored ${widget.marks}";
-    } else if (widget.marks < 35) {
+    if (widget.marks < 5) {
       image = images[1];
-      message = "You Can Do Better..\n" + "You Scored ${widget.marks}";
+      message = "You Should Try Hard..\n" + "You Scored ${widget.marks}/10";
+    } else if (widget.marks < 7) {
+      image = images[2];
+      message = "You Can Do Better..\n" + "You Scored ${widget.marks}/10";
     } else {
       image = images[0];
-      message = "You Did Very Well..\n" + "You Scored ${widget.marks}";
+      message = "You Did Very Well..\n" + "You Scored ${widget.marks}/10";
     }
     super.initState();
   }
 
- 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,67 +46,37 @@ class _ResultPageState extends State<ResultPage> {
             fontFamily: 'Quicksand',
           ),
         ),
-        // automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         elevation: 0,
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 8,
-            child: Material(
-              elevation: 10.0,
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 5.0,
-                          horizontal: 15.0,
-                        ),
-                        child: Center(
-                          child: Text(
-                            message,
-                            style: TextStyle(
-                               fontSize:26.0,
-                    fontWeight:FontWeight.w500,
-                              fontFamily: "Quicksand",
-                            ),
-                          ),
-                        )),
-                  ],
-                ),
+      body: Center(
+        child: Column(
+          children: [
+            Spacer(),
+            SvgPicture.asset(
+              image,
+              width: 200,
+              height: 150,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+              child: Text(
+                message,
+                maxLines: 5,
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w500,
+                    // color: Colors.black,
+                    fontFamily: 'Quicksand'),
               ),
             ),
-          ),
-          // Expanded(
-          //   flex: 4,
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: <Widget>[
-          //       OutlineButton(
-          //         onPressed: () {
-          //           // Navigator.of(context).pushReplacement(MaterialPageRoute(
-          //           //   builder: (context) => Home(),
-          //           // ));
-          //           Navigator.pop(context);
-          //         },
-          //         child: Text(
-          //           "Continue",
-          //           style: TextStyle(
-          //             fontSize: 18.0,
-          //           ),
-          //         ),
-          //         padding: EdgeInsets.symmetric(
-          //           vertical: 10.0,
-          //           horizontal: 25.0,
-          //         ),
-          //         borderSide: BorderSide(width: 3.0, color: Colors.indigo),
-          //         splashColor: Color(0xFF4354b3),
-          //       )
-          //     ],
-          //   ),
-          // )
-        ],
+            Spacer(),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton.extended(
         label: Row(
