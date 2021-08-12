@@ -197,8 +197,8 @@ class _NoteViewState extends State<NoteView> {
                 selectedNote.content,
                 style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black54,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black,
                     fontFamily: 'Quicksand'),
               )),
         ],

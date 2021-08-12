@@ -3,6 +3,8 @@ import 'package:line_icons/line_icons.dart';
 import 'package:op_app/models/question.dart';
 import 'package:op_app/quizscreen.dart';
 
+import '../quizpage.dart';
+
 class QuizCard extends StatelessWidget {
   final Quiz quiz;
 
@@ -14,7 +16,7 @@ class QuizCard extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (_) => QuizPage(quiz: quiz)));
+              context, MaterialPageRoute(builder: (_) => Getjson(quiz: quiz)));
         },
         child: Container(
           padding: const EdgeInsets.all(8.0),

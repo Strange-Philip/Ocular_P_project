@@ -1,10 +1,12 @@
 class Quiz {
   final String topic;
   final List<Question> questions;
+  final String quizdir;
 
   Quiz({
     this.questions,
     this.topic,
+    this.quizdir
   });
 }
 

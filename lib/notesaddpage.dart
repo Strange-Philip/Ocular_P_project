@@ -285,7 +285,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
               textCapitalization: TextCapitalization.sentences,
               style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w500,
                   color: Colors.black45,
                   fontFamily: 'Quicksand'),
               decoration: InputDecoration(

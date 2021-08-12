@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:op_app/cards/notescard.dart';
+import 'package:op_app/tools/loading.dart';
 import 'package:provider/provider.dart';
 
 import 'models/notesprovider.dart';
@@ -23,13 +24,7 @@ class _NotesState extends State<Notes> {
         future: Provider.of<NoteProvider>(context, listen: false).getNotes(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return SafeArea(
-              child: Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
-            );
+            return Loading();
           } else if (snapshot.connectionState == ConnectionState.done) {
             return SafeArea(
                 child: Scaffold(

@@ -1,5 +1,12 @@
-import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'cards/flashcard.dart ';
+
+class FlashCard {
+  final String frontText;
+  final String backText;
+
+  FlashCard(this.frontText, this.backText);
+}
 
 class FlashCards extends StatefulWidget {
   @override
@@ -7,6 +14,18 @@ class FlashCards extends StatefulWidget {
 }
 
 class _FlashCardsState extends State<FlashCards> {
+  List<FlashCard> flashcardlist = [
+    FlashCard('Excepteur ipsum laboris cillum est in velit consequat.',
+        'Lorem ea ea do dolor voluptate aliquip. Et sint officia minim cupidatat irure aute nostrud veniam sit aute commodo ea.'),
+    FlashCard('Excepteur ipsum laboris cillum est in velit consequat.',
+        'Lorem ea ea do dolor voluptate aliquip. Et sint officia minim cupidatat irure aute nostrud veniam sit aute commodo ea.'),
+    FlashCard('Excepteur ipsum laboris cillum est in velit consequat.',
+        'Lorem ea ea do dolor voluptate aliquip. Et sint officia minim cupidatat irure aute nostrud veniam sit aute commodo ea.'),
+    FlashCard('Excepteur ipsum laboris cillum est in velit consequat.',
+        'Lorem ea ea do dolor voluptate aliquip. Et sint officia minim cupidatat irure aute nostrud veniam sit aute commodo ea.'),
+    FlashCard('Excepteur ipsum laboris cillum est in velit consequat.',
+        'Lorem ea ea do dolor voluptate aliquip. Et sint officia minim cupidatat irure aute nostrud veniam sit aute commodo ea.'),
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,174 +42,19 @@ class _FlashCardsState extends State<FlashCards> {
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 60),
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          physics: BouncingScrollPhysics(),
-          children: [
-            Padding(
-             padding: const EdgeInsets.symmetric(horizontal:10),
-              child: FlipCard(
-                direction: FlipDirection.HORIZONTAL,
-                front: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 400,
-                  width: 250,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4354b3).withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(12),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 60),
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              physics: BouncingScrollPhysics(),
+              itemCount: flashcardlist.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8),
+                  child: Flash(
+                    flashCard: flashcardlist[index],
                   ),
-                  child: Text(
-                    'Front',
-                    style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                back: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 500,
-                  width: 250,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4354b3).withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    'Nostrud voluptate ea ut et. Aute esse enim aliquip consectetur irure. Consectetur amet excepteur reprehenderit fugiat cillum anim sint veniam excepteur laborum excepteur sit. Irure anim ut ullamco quis duis. Eiusmod consequat do occaecat excepteur pariatur aliqua ad ad excepteur sunt non eiusmod laboris. Occaecat cupidatat ea amet est officia non deserunt cupidatat excepteur commodo commodo.',
-                    style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal:10),
-              child: FlipCard(
-                direction: FlipDirection.HORIZONTAL,
-                front: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 500,
-                  width: 250,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4354b3).withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    'Front',
-                    style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                back: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 500,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4354b3).withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    'Nostrud voluptate ea ut et. Aute esse enim aliquip consectetur irure. Consectetur amet excepteur reprehenderit fugiat cillum anim sint veniam excepteur laborum excepteur sit. Irure anim ut ullamco quis duis. Eiusmod consequat do occaecat excepteur pariatur aliqua ad ad excepteur sunt non eiusmod laboris. Occaecat cupidatat ea amet est officia non deserunt cupidatat excepteur commodo commodo.',
-                    style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal:10),
-              child: FlipCard(
-                direction: FlipDirection.HORIZONTAL,
-                front: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 500,
-                  width: 250,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4354b3).withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    'Front',
-                    style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                back: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 500,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4354b3).withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    'Nostrud voluptate ea ut et. Aute esse enim aliquip consectetur irure. Consectetur amet excepteur reprehenderit fugiat cillum anim sint veniam excepteur laborum excepteur sit. Irure anim ut ullamco quis duis. Eiusmod consequat do occaecat excepteur pariatur aliqua ad ad excepteur sunt non eiusmod laboris. Occaecat cupidatat ea amet est officia non deserunt cupidatat excepteur commodo commodo.',
-                    style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal:10),
-              child: FlipCard(
-                direction: FlipDirection.HORIZONTAL,
-                front: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 500,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4354b3).withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    'Front',
-                    style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                back: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 500,
-                  width: 200,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4354b3).withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    'Nostrud voluptate ea ut et. Aute esse enim aliquip consectetur irure. Consectetur amet excepteur reprehenderit fugiat cillum anim sint veniam excepteur laborum excepteur sit. Irure anim ut ullamco quis duis. Eiusmod consequat do occaecat excepteur pariatur aliqua ad ad excepteur sunt non eiusmod laboris. Occaecat cupidatat ea amet est officia non deserunt cupidatat excepteur commodo commodo.',
-                    style: TextStyle(
-                      fontFamily: 'Quicksand',
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+                );
+              })),
     ));
   }
 }

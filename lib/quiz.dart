@@ -9,8 +9,11 @@ class QuizOverview extends StatefulWidget {
 
 class _QuizOverviewState extends State<QuizOverview> {
   List<Quiz> quizes = [
-    Quiz(questions: questions, topic: 'Topic 1'),
-    Quiz(questions: [], topic: 'Topic 2'),
+    Quiz(
+        questions: questions,
+        topic: 'Topic 1',
+        quizdir: 'images/json/cpp.json'),
+    Quiz(questions: [], topic: 'Topic 2', quizdir: "images/json/python.json"),
     Quiz(questions: [], topic: 'Topic 3'),
     Quiz(questions: [], topic: 'Topic 4'),
     Quiz(questions: [], topic: 'Topic 5'),

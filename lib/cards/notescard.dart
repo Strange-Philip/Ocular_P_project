@@ -70,7 +70,7 @@ class NotesCard extends StatelessWidget {
                             note.imagePath == null || note.imagePath == ""
                                 ? SizedBox()
                                 : Padding(
-                                    padding: const EdgeInsets.only(right: 5),
+                                    padding: const EdgeInsets.only(right: 0),
                                     child: Icon(
                                       LineIcons.image,
                                       color: Color(0xFF4354b3),
@@ -83,7 +83,7 @@ class NotesCard extends StatelessWidget {
                         height: 5,
                       ),
                       Container(
-                        width: 270,
+                        // width: 270,
                         child: Text(
                           note.content,
                           maxLines: 3,
@@ -92,47 +92,12 @@ class NotesCard extends StatelessWidget {
                             color: Colors.black,
                             fontFamily: 'Quicksand',
                             fontSize: 16,
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),
                       Spacer(),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(right: 10),
-                      //   child: Row(
-                      //     crossAxisAlignment: CrossAxisAlignment.start,
-                      //     children: [
-                      //       Icon(LineIcons.comment,
-                      //           size: 18, color: Colors.green[800]),
-                      //       SizedBox(
-                      //         width: 3,
-                      //       ),
-                      //       Text(
-                      //         forum.comments,
-                      //         maxLines: 1,
-                      //         overflow: TextOverflow.ellipsis,
-                      //         style: TextStyle(
-                      //           color: Colors.green[800],
-                      //           fontSize: 16,
-                      //           fontWeight: FontWeight.w400,
-
-                      //         ),
-                      //       ),
-                      //       Spacer(),
-                      //       Text(
-                      //         forum.time,
-                      //         maxLines: 1,
-                      //         overflow: TextOverflow.ellipsis,
-                      //         style: TextStyle(
-                      //           color: Colors.green[800],
-                      //           fontSize: 16,
-                      //           fontWeight: FontWeight.w400,
-
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // )
+                     
                     ],
                   ),
                 ),
