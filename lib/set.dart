@@ -52,6 +52,7 @@ class _SetttingsState extends State<Setttings> {
         elevation: 0,
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -208,9 +209,9 @@ class _SetttingsState extends State<Setttings> {
                 "general".toUpperCase(),
                 maxLines: 1,
                 style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black38,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black45,
                     fontFamily: 'Quicksand'),
               ),
             ),
@@ -396,9 +397,9 @@ class _SetttingsState extends State<Setttings> {
                 "feedback".toUpperCase(),
                 maxLines: 1,
                 style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black38,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black45,
                     fontFamily: 'Quicksand'),
               ),
             ),

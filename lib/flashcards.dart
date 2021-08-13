@@ -42,14 +42,14 @@ class _FlashCardsState extends State<FlashCards> {
         elevation: 0,
       ),
       body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 60),
+          padding: const EdgeInsets.symmetric( vertical: 60),
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
               physics: BouncingScrollPhysics(),
               itemCount: flashcardlist.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal:12,vertical: 8),
                   child: Flash(
                     flashCard: flashcardlist[index],
                   ),

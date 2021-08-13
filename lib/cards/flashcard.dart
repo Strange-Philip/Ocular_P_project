@@ -14,7 +14,7 @@ class Flash extends StatelessWidget {
       front: Container(
         padding: const EdgeInsets.all(8.0),
         height: 400,
-        width: 300,
+        width: 250,
         decoration: BoxDecoration(
           color: Color(0xFF4354b3).withOpacity(0.9),
           borderRadius: BorderRadius.circular(12),
@@ -33,7 +33,7 @@ class Flash extends StatelessWidget {
       back: Container(
         padding: const EdgeInsets.all(8.0),
         height: 400,
-        width: 300,
+        width: 250,
         decoration: BoxDecoration(
           color: Color(0xFF4354b3).withOpacity(0.9),
           borderRadius: BorderRadius.circular(12),

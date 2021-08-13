@@ -204,14 +204,15 @@ class _QuizpageState extends State<Quizpage> {
   Widget choicebutton(String k) {
     return Padding(
         padding: EdgeInsets.symmetric(
-          vertical: 10.0,
+          vertical: 8.0,
           horizontal: 20.0,
         ),
         child: GestureDetector(
           onTap: () => checkanswer(k),
           child: Container(
-            width: 250,
-            padding: EdgeInsets.all(12),
+            // height: 55,
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(vertical: 10),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -219,22 +220,12 @@ class _QuizpageState extends State<Quizpage> {
             child: Column(
               children: [
                 Text(
-                  mydata[1][i.toString()][k],
+                  mydata[1][i.toString()][k] ?? "",
                   style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Quicksand',
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(width: 12),
-                // disableAnswer == true
-                //     ? Text(
-                //         mydata[2][i.toString()][k],
-                //         style: TextStyle(
-                //             fontSize: 20,
-                //             fontFamily: 'Quicksand',
-                //             fontWeight: FontWeight.bold),
-                //       )
-                //     : SizedBox()
               ],
             ),
           ),
@@ -248,25 +239,50 @@ class _QuizpageState extends State<Quizpage> {
         return showDialog(
             context: context,
             builder: (context) => AlertDialog(
-                  content: Text("You Can't Go Back At This Stage."),
+                  content: Text(
+                    "Are you sure you want to quit at this stage?",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18.0,
+                        fontFamily: 'Quicksand'),
+                  ),
                   actions: <Widget>[
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                      ),
+                      child: Text(
+                        'QUIT',
+                        style: TextStyle(
+                            color: Color(0xFF4354b3),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.0,
+                            fontFamily: 'Quicksand'),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
                       },
                       style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Color(0xFF4354b3)),
                       ),
                       child: Text(
-                        'OK',
+                        'NO',
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w600,
                             fontSize: 14.0,
                             fontFamily: 'Quicksand'),
                       ),
-                    )
+                    ),
                   ],
                 ));
       },
@@ -286,39 +302,29 @@ class _QuizpageState extends State<Quizpage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              mydata[0][i.toString()],
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                fontFamily: 'Quicksand',
+            Padding(
+              padding: const EdgeInsets.fromLTRB(15, 15, 15, 2),
+              child: Text(
+                mydata[0][i.toString()] ?? "",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontFamily: 'Quicksand',
+                ),
               ),
             ),
             SizedBox(height: 8),
-            Text(
-              'Please Choose an Answer',
-              style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  fontSize: 18,
-                  fontFamily: 'Quicksand',
-                  fontWeight: FontWeight.w500),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 15),
+              child: Text(
+                'Please Choose an Answer',
+                style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontSize: 18,
+                    fontFamily: 'Quicksand',
+                    fontWeight: FontWeight.w500),
+              ),
             ),
-            SizedBox(height: 20),
-            // Expanded(
-            //   flex: 3,
-            //   child: Container(
-            //     padding: EdgeInsets.all(15.0),
-            //     alignment: Alignment.bottomLeft,
-            //     child: Text(
-            //       mydata[0][i.toString()],
-            //       style: TextStyle(
-            //         fontSize:26.0,
-            //         fontWeight:FontWeight.w500,
-            //         fontFamily: "Quicksand",
-            //       ),
-            //     ),
-            //   ),
-            // ),
             Expanded(
               // flex: 6,
               child: AbsorbPointer(
@@ -336,24 +342,42 @@ class _QuizpageState extends State<Quizpage> {
                 ),
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.topCenter,
-                child: Center(
-                  child: Text(
-                    showtimer,
-                    style: TextStyle(
-                        fontSize: 35.0,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: 'Quicksand',
-                        color: int.parse(showtimer) > 10
-                            ? Colors.green
-                            : Colors.red),
-                  ),
+            disableAnswer == true
+                ? Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 2, horizontal: 15),
+                    child: Center(
+                      child: Text(
+                        mydata[3][i.toString()],
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Quicksand',
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  )
+                : SizedBox(),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              alignment: Alignment.topCenter,
+              child: Center(
+                child: Text(
+                  showtimer,
+                  style: TextStyle(
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Quicksand',
+                      color: int.parse(showtimer) > 10
+                          ? Colors.green
+                          : Colors.red),
                 ),
               ),
             ),
+            SizedBox(
+              height: 70,
+            )
           ],
         ),
       ),

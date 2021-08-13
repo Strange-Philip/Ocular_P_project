@@ -23,13 +23,13 @@ class _ResultPageState extends State<ResultPage> {
   void initState() {
     if (widget.marks < 5) {
       image = images[1];
-      message = "You Should Try Hard..\n" + "You Scored ${widget.marks}/10";
+      message = "You Should Try Hard.\n" + "You Scored ${widget.marks}/10";
     } else if (widget.marks < 7) {
       image = images[2];
-      message = "You Can Do Better..\n" + "You Scored ${widget.marks}/10";
+      message = "You Can Do Better.\n" + "You Scored ${widget.marks}/10";
     } else {
       image = images[0];
-      message = "You Did Very Well..\n" + "You Scored ${widget.marks}/10";
+      message = "You Did Very Well.\n" + "You Scored ${widget.marks}/10";
     }
     super.initState();
   }
@@ -64,14 +64,16 @@ class _ResultPageState extends State<ResultPage> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-              child: Text(
-                message,
-                maxLines: 5,
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500,
-                    // color: Colors.black,
-                    fontFamily: 'Quicksand'),
+              child: Center(
+                child: Text(
+                  message,
+                  maxLines: 3,
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                      // color: Colors.black,
+                      fontFamily: 'Quicksand'),
+                ),
               ),
             ),
             Spacer(),
