@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:op_app/cards/coursecards.dart';
+import 'package:op_app/cards/htmlContent.dart';
 import 'package:op_app/flashcards.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -93,7 +94,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     getname().then((value) => setState(() {
-          this.name= value;
+          this.name = value;
         }));
   }
 
@@ -154,6 +155,7 @@ class _HomeState extends State<Home> {
                       return CourseCard(
                         topic: topics[index],
                       );
+                      // return ViewHTML();
                     }),
               ),
             ),

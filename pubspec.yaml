@@ -49,6 +49,8 @@ dependencies:
   flutter_form_builder: ^6.0.0
   flip_card: ^0.5.0
   url_launcher: ^6.0.9
+  flutter_html: ^2.1.1
+  webview_flutter: ^2.0.12
   
 
 
@@ -78,6 +80,7 @@ flutter:
     - images/
     - images/pdf/
     - images/json/
+    - images/pdf/test.txt
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

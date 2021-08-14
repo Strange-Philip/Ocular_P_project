@@ -119,7 +119,7 @@ class _QuizpageState extends State<Quizpage> {
     var distinctIds = [];
     var rand = new Random();
     for (int i = 0;;) {
-      distinctIds.add(rand.nextInt(10));
+      distinctIds.add(rand.nextInt(10) + 1);
       randomArray = distinctIds.toSet().toList();
       if (randomArray.length < 10) {
         continue;
@@ -220,7 +220,7 @@ class _QuizpageState extends State<Quizpage> {
             child: Column(
               children: [
                 Text(
-                  mydata[1][i.toString()][k] ?? "",
+                  mydata[1][i.toString()][k],
                   style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Quicksand',
@@ -299,87 +299,90 @@ class _QuizpageState extends State<Quizpage> {
                 fontWeight: FontWeight.w600),
           ),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 15, 15, 2),
-              child: Text(
-                mydata[0][i.toString()] ?? "",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  fontFamily: 'Quicksand',
-                ),
-              ),
-            ),
-            SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 15),
-              child: Text(
-                'Please Choose an Answer',
-                style: TextStyle(
-                    fontStyle: FontStyle.italic,
-                    fontSize: 18,
-                    fontFamily: 'Quicksand',
-                    fontWeight: FontWeight.w500),
-              ),
-            ),
-            Expanded(
-              // flex: 6,
-              child: AbsorbPointer(
-                absorbing: disableAnswer,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      choicebutton('a'),
-                      choicebutton('b'),
-                      choicebutton('c'),
-                      choicebutton('d'),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            disableAnswer == true
-                ? Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 2, horizontal: 15),
-                    child: Center(
-                      child: Text(
-                        mydata[3][i.toString()],
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Quicksand',
-                            fontWeight: FontWeight.w500),
+        body: mydata.isEmpty
+            ? Loading()
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 15, 15, 2),
+                    child: Text(
+                      mydata[0][i.toString()] ?? "",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: 'Quicksand',
                       ),
                     ),
+                  ),
+                  SizedBox(height: 8),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 2, horizontal: 15),
+                    child: Text(
+                      'Please Choose an Answer',
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontSize: 18,
+                          fontFamily: 'Quicksand',
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  Expanded(
+                    // flex: 6,
+                    child: AbsorbPointer(
+                      absorbing: disableAnswer,
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            choicebutton('a'),
+                            choicebutton('b'),
+                            choicebutton('c'),
+                            choicebutton('d'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  disableAnswer == true
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 2, horizontal: 15),
+                          child: Center(
+                            child: Text(
+                              mydata[3][i.toString()],
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Quicksand',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        )
+                      : SizedBox(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    alignment: Alignment.topCenter,
+                    child: Center(
+                      child: Text(
+                        showtimer,
+                        style: TextStyle(
+                            fontSize: 35.0,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Quicksand',
+                            color: int.parse(showtimer) > 10
+                                ? Colors.green
+                                : Colors.red),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 70,
                   )
-                : SizedBox(),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              alignment: Alignment.topCenter,
-              child: Center(
-                child: Text(
-                  showtimer,
-                  style: TextStyle(
-                      fontSize: 35.0,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Quicksand',
-                      color: int.parse(showtimer) > 10
-                          ? Colors.green
-                          : Colors.red),
-                ),
+                ],
               ),
-            ),
-            SizedBox(
-              height: 70,
-            )
-          ],
-        ),
       ),
     );
   }
