@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:op_app/models/question.dart';
 import 'package:op_app/resultspage.dart';
 import 'package:op_app/tools/loading.dart';
@@ -202,34 +203,34 @@ class _QuizpageState extends State<Quizpage> {
   }
 
   Widget choicebutton(String k) {
-    return Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 8.0,
-          horizontal: 20.0,
-        ),
-        child: GestureDetector(
-          onTap: () => checkanswer(k),
-          child: Container(
-            // height: 55,
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 10),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(width: 2, color: btncolor[k])),
-            child: Column(
-              children: [
-                Text(
-                  mydata[1][i.toString()][k],
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Quicksand',
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
+    return mydata[1][i.toString()][k] == null
+        ? SizedBox()
+        : Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 8.0,
+              horizontal: 20.0,
             ),
-          ),
-        ));
+            child: GestureDetector(
+              onTap: () => checkanswer(k),
+              child: Container(
+                // height: 55,
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(width: 2, color: btncolor[k])),
+                child: Center(
+                  child: Text(
+                    mydata[1][i.toString()][k],
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Quicksand',
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ));
   }
 
   @override
@@ -315,74 +316,113 @@ class _QuizpageState extends State<Quizpage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 8),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 2, horizontal: 15),
-                    child: Text(
-                      'Please Choose an Answer',
-                      style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 18,
-                          fontFamily: 'Quicksand',
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
+                  // SizedBox(height: 8),
+                  // Padding(
+                  //   padding:
+                  //       const EdgeInsets.symmetric(vertical: 2, horizontal: 15),
+                  //   child: Text(
+                  //     'Please Choose an Answer',
+                  //     style: TextStyle(
+                  //         fontStyle: FontStyle.italic,
+                  //         fontSize: 18,
+                  //         fontFamily: 'Quicksand',
+                  //         fontWeight: FontWeight.w500),
+                  //   ),
+                  // ),
+                  // disableAnswer == true
+                  //     ? Padding(
+                  //         padding: const EdgeInsets.symmetric(
+                  //             vertical: 2, horizontal: 15),
+                  //         child: Center(
+                  //           child: Text(
+                  //             mydata[3][i.toString()],
+                  //             style: TextStyle(
+                  //                 fontSize: 18,
+                  //                 fontFamily: 'Quicksand',
+                  //                 fontWeight: FontWeight.w400),
+                  //           ),
+                  //         ),
+                  //       )
+                  //     : SizedBox(height: 1,),
                   Expanded(
                     // flex: 6,
                     child: AbsorbPointer(
                       absorbing: disableAnswer,
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            choicebutton('a'),
-                            choicebutton('b'),
-                            choicebutton('c'),
-                            choicebutton('d'),
-                          ],
-                        ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          choicebutton('a') ?? SizedBox(),
+                          choicebutton('b') ?? SizedBox(),
+                          choicebutton('c') ?? SizedBox(),
+                          choicebutton('d') ?? SizedBox(),
+                        ],
                       ),
                     ),
                   ),
-                  disableAnswer == true
-                      ? Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 2, horizontal: 15),
-                          child: Center(
-                            child: Text(
-                              mydata[3][i.toString()],
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'Quicksand',
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        )
-                      : SizedBox(),
+                  // disableAnswer == true
+                  //     ? Padding(
+                  //         padding: const EdgeInsets.symmetric(
+                  //             vertical: 2, horizontal: 15),
+                  //         child: Center(
+                  //           child: Text(
+                  //             mydata[3][i.toString()],
+                  //             style: TextStyle(
+                  //                 fontSize: 20,
+                  //                 fontFamily: 'Quicksand',
+                  //                 fontWeight: FontWeight.w500),
+                  //           ),
+                  //         ),
+                  //       )
+                  //     : SizedBox(),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Container(
+                  //   child: Center(
+                  //     child: Text(
+                  //       showtimer,
+                  //       style: TextStyle(
+                  //           fontSize: 35.0,
+                  //           fontWeight: FontWeight.w700,
+                  //           fontFamily: 'Quicksand',
+                  //           color: int.parse(showtimer) > 10
+                  //               ? Colors.green
+                  //               : Colors.red),
+                  //     ),
+                  //   ),
+                  // ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
-                  Container(
-                    alignment: Alignment.topCenter,
-                    child: Center(
-                      child: Text(
-                        showtimer,
-                        style: TextStyle(
-                            fontSize: 35.0,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Quicksand',
-                            color: int.parse(showtimer) > 10
-                                ? Colors.green
-                                : Colors.red),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 70,
-                  )
                 ],
               ),
+               floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton.extended(
+            label: Row(
+              children: [
+                 Icon(
+                  LineIcons.clock,
+                  size: 25,
+                  color: Colors.white,
+                ),
+                Text(
+                  " $showtimer",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'Quicksand',
+                    color: Colors.white,
+                  ),
+                ),
+               
+              ],
+            ),
+            elevation: 0,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            backgroundColor:
+                int.parse(showtimer) > 10 ? Colors.green : Colors.red),
       ),
     );
   }

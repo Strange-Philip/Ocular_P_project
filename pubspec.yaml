@@ -45,11 +45,10 @@ dependencies:
   provider: ^5.0.0
   easy_dynamic_theme: ^2.2.0
   image_picker: ^0.7.5+2
-  native_pdf_view: ^4.1.0
   flutter_form_builder: ^6.0.0
   flip_card: ^0.5.0
   url_launcher: ^6.0.9
-  flutter_html: ^2.1.1
+  flutter_html: ^2.0.0
   webview_flutter: ^2.0.12
   
 

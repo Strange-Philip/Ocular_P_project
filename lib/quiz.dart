@@ -9,15 +9,16 @@ class QuizOverview extends StatefulWidget {
 
 class _QuizOverviewState extends State<QuizOverview> {
   List<Quiz> quizes = [
-    Quiz(
-        questions: questions,
-        topic: 'Topic 1',
-        quizdir: 'images/json/cpp.json'),
-    Quiz(questions: [], topic: 'Topic 2', quizdir: "images/json/python.json"),
-    Quiz(questions: [], topic: 'Topic 3'),
-    Quiz(questions: [], topic: 'Topic 4'),
-    Quiz(questions: [], topic: 'Topic 5'),
-    Quiz(questions: [], topic: 'Topic 6'),
+    Quiz(topic: 'Quiz 1', quizdir: 'images/json/quiz1.json'),
+    Quiz(topic: 'Quiz 2', quizdir: 'images/json/quiz2.json'),
+    Quiz(topic: 'Quiz 3', quizdir: 'images/json/quiz3.json'),
+    Quiz(topic: 'Quiz 4', quizdir: 'images/json/quiz4.json'),
+    Quiz(topic: 'Quiz 5', quizdir: 'images/json/quiz5.json'),
+    Quiz(topic: 'Quiz 6', quizdir: 'images/json/quiz6.json'),
+    Quiz(topic: 'Quiz 7', quizdir: 'images/json/quiz7.json'),
+    Quiz(topic: 'Quiz 8', quizdir: 'images/json/quiz8.json'),
+    Quiz(topic: 'Quiz 9', quizdir: 'images/json/quiz9.json'),
+    Quiz(topic: 'Quiz 10', quizdir: 'images/json/quiz10.json'),
   ];
   @override
   Widget build(BuildContext context) {

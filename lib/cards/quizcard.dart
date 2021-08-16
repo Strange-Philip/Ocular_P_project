@@ -46,7 +46,7 @@ class QuizCard extends StatelessWidget {
                 ),
               ),
               Text(
-                '${quiz.questions.length} questions',
+                '10 questions',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
