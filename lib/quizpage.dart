@@ -199,7 +199,7 @@ class _QuizpageState extends State<Quizpage> {
     });
     // nextquestion();
     // changed timer duration to 1 second
-    Timer(Duration(seconds: 3), nextquestion);
+    Timer(Duration(seconds: 1), nextquestion);
   }
 
   Widget choicebutton(String k) {

@@ -6,6 +6,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../readtopic.dart';
+import 'htmlContent.dart';
 
 class Topic {
   final String name;
@@ -27,31 +28,31 @@ class CourseCard extends StatefulWidget {
 
 class _CourseCardState extends State<CourseCard> {
   String assetPDFPath = "";
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    getFileFromAsset(widget.topic.pdf).then((f) {
-      setState(() {
-        assetPDFPath = f.path;
-        print(assetPDFPath);
-      });
-    });
-  }
+  //   getFileFromAsset(widget.topic.pdf).then((f) {
+  //     setState(() {
+  //       assetPDFPath = f.path;
+  //       print(assetPDFPath);
+  //     });
+  //   });
+  // }
 
-  Future<File> getFileFromAsset(String asset) async {
-    try {
-      var data = await rootBundle.load(asset);
-      var bytes = data.buffer.asUint8List();
-      var dir = await getApplicationDocumentsDirectory();
-      File file = File("${dir.path}/mypdf.pdf");
+  // Future<File> getFileFromAsset(String asset) async {
+  //   try {
+  //     var data = await rootBundle.load(asset);
+  //     var bytes = data.buffer.asUint8List();
+  //     var dir = await getApplicationDocumentsDirectory();
+  //     File file = File("${dir.path}/mypdf.pdf");
 
-      File assetFile = await file.writeAsBytes(bytes);
-      return assetFile;
-    } catch (e) {
-      throw Exception("Error opening asset file");
-    }
-  }
+  //     File assetFile = await file.writeAsBytes(bytes);
+  //     return assetFile;
+  //   } catch (e) {
+  //     throw Exception("Error opening asset file");
+  //   }
+  // }
 
   Widget build(BuildContext context) {
     return Padding(
@@ -61,7 +62,7 @@ class _CourseCardState extends State<CourseCard> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (_) => ReadView(
+                  builder: (_) => ViewHTML(
                         topic: widget.topic,
                       )));
         },

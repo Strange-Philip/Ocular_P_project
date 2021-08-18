@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:op_app/cards/coursecards.dart';
-import 'package:op_app/cards/htmlContent.dart';
 import 'package:op_app/flashcards.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,9 +14,9 @@ String greetingMessage() {
 
   if (timeNow <= 12) {
     return 'Good Morning';
-  } else if ((timeNow > 12) && (timeNow <= 16)) {
+  } else if ((timeNow > 12) && (timeNow <= 18)) {
     return 'Good Afternoon';
-  } else if ((timeNow > 16) && (timeNow < 20)) {
+  } else if ((timeNow > 18) && (timeNow < 23)) {
     return 'Good Evening';
   } else {
     return 'Sweet dreams';
@@ -31,7 +30,7 @@ class _HomeState extends State<Home> {
     Topic(
         '1. The Bony Orbit',
         "2 hrs 30 mins",
-        'images/pdf/BonyOrbit.pdf',
+        'images/pdf/Bony Orbit.html',
         Icon(
           LineIcons.brain,
           color: Colors.white,
@@ -39,24 +38,24 @@ class _HomeState extends State<Home> {
         )),
     Topic(
         '2. Orbital Contents',
-        "2 hrs 30 mins",
-        '',
+        "2 hrs ",
+        'images/pdf/Orbital Contents.html',
         Icon(
           LineIcons.bone,
           color: Colors.white,
           size: 28,
         )),
     Topic(
-        'Topic 3',
-        "2 hrs 30 mins",
-        '',
+        'Eyelid',
+        "1 hr 30 mins",
+        'images/pdf/Eyelid.html',
         Icon(
           LineIcons.eye,
           color: Colors.white,
           size: 28,
         )),
     Topic(
-        'Topic 4',
+        'Lacrimal System',
         "2 hrs 30 mins",
         '',
         Icon(
@@ -65,20 +64,65 @@ class _HomeState extends State<Home> {
           size: 28,
         )),
     Topic(
-        'Topic 5',
-        "2 hrs 30 mins",
-        '',
+        'Cornea And Sclera',
+        "3 hrs 30 mins",
+        'images/pdf/Cornea & Sclera.html',
         Icon(
           LineIcons.stethoscope,
           color: Colors.white,
           size: 28,
         )),
     Topic(
-        'Topic 6',
+        'Aqueous Humour',
+        "2 hrs 30 mins",
+        'images/pdf/Aqueous.html',
+        Icon(
+          LineIcons.water,
+          color: Colors.white,
+          size: 28,
+        )),
+        Topic(
+        'Crystalline Lens',
+        "2 hrs 30 mins",
+        'images/pdf/Crystalline Lens.html',
+        Icon(
+          LineIcons.glasses,
+          color: Colors.white,
+          size: 28,
+        )),
+        Topic(
+        'Extraocular Muscles',
         "2 hrs 30 mins",
         '',
         Icon(
+          LineIcons.brain,
+          color: Colors.white,
+          size: 28,
+        )),
+        Topic(
+        'Vitreous Humour',
+        "2 hrs 30 mins",
+        '',
+        Icon(
+          LineIcons.water,
+          color: Colors.white,
+          size: 28,
+        )),
+        Topic(
+        'Retina',
+        "1 hr 30 mins",
+        'images/pdf/Retina.html',
+        Icon(
           LineIcons.lowVision,
+          color: Colors.white,
+          size: 28,
+        )),
+        Topic(
+        'Cranial Nerves',
+        "2 hrs 30 mins",
+        '',
+        Icon(
+          LineIcons.brain,
           color: Colors.white,
           size: 28,
         )),
