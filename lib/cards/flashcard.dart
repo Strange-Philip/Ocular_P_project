@@ -26,6 +26,7 @@ class Flash extends StatelessWidget {
               fontFamily: 'Quicksand',
               fontSize: 18,
               color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
@@ -43,7 +44,7 @@ class Flash extends StatelessWidget {
             flashCard.backText,
             style: TextStyle(
               fontFamily: 'Quicksand',
-              fontSize: 18,
+              fontSize: 15,
               color: Colors.white,
             ),
           ),

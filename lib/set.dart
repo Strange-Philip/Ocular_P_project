@@ -77,7 +77,7 @@ class _SetttingsState extends State<Setttings> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Center(
                           child: Text(
-                            'Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                            'Learning must be harmonious, progressive and measured. \nSeek to make intangible knowledge tangible.',
                             maxLines: 50,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -104,7 +104,7 @@ class _SetttingsState extends State<Setttings> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Center(
                           child: Text(
-                            'Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                            'Brains have no race or creed, yours is as good as any other.',
                             maxLines: 50,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -131,7 +131,7 @@ class _SetttingsState extends State<Setttings> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Center(
                           child: Text(
-                            'Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                            'You don’t have to be great to start, but you have to start to be great.',
                             maxLines: 50,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -158,7 +158,7 @@ class _SetttingsState extends State<Setttings> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Center(
                           child: Text(
-                            'Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                            'The expert in everything was once a beginner.',
                             maxLines: 50,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
@@ -185,7 +185,7 @@ class _SetttingsState extends State<Setttings> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Center(
                           child: Text(
-                            'Exercitation id aliqua dolor ipsum aliqua incididunt consequat labore cupidatat nisi pariatur proident.',
+                            'The difference between a stumbling block and a stepping-stone is how high you raise your foot.',
                             maxLines: 50,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(

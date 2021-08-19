@@ -28,7 +28,16 @@ class _HomeState extends State<Home> {
   String name;
   List<Topic> topics = [
     Topic(
-        '1. The Bony Orbit',
+        'The Eyeball',
+        "2 hrs",
+        'images/pdf/Eyeball.html',
+        Icon(
+          LineIcons.eye,
+          color: Colors.white,
+          size: 28,
+        )),
+    Topic(
+        'The Bony Orbit',
         "2 hrs 30 mins",
         'images/pdf/Bony Orbit.html',
         Icon(
@@ -37,7 +46,7 @@ class _HomeState extends State<Home> {
           size: 28,
         )),
     Topic(
-        '2. Orbital Contents',
+        'Orbital Contents',
         "2 hrs ",
         'images/pdf/Orbital Contents.html',
         Icon(
@@ -57,7 +66,7 @@ class _HomeState extends State<Home> {
     Topic(
         'Lacrimal System',
         "2 hrs 30 mins",
-        '',
+        'images/pdf/Lacrimal System.html',
         Icon(
           LineIcons.glasses,
           color: Colors.white,
@@ -93,7 +102,7 @@ class _HomeState extends State<Home> {
         Topic(
         'Extraocular Muscles',
         "2 hrs 30 mins",
-        '',
+        'images/pdf/Extraocular Muscles.html',
         Icon(
           LineIcons.brain,
           color: Colors.white,
@@ -120,7 +129,7 @@ class _HomeState extends State<Home> {
         Topic(
         'Cranial Nerves',
         "2 hrs 30 mins",
-        '',
+        'images/pdf/Cranial Nerves.html',
         Icon(
           LineIcons.brain,
           color: Colors.white,
