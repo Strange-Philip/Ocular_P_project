@@ -49,6 +49,7 @@ class _ViewHTMLState extends State<ViewHTML> {
                   fontWeight: FontWeight.w600),
             ),
           ),
+          backgroundColor: Colors.white,
           floatingActionButton: widget.topic.pdf == ''
               ? SizedBox()
               : FloatingActionButton.extended(
@@ -104,15 +105,18 @@ class _ViewHTMLState extends State<ViewHTML> {
                   ],
                 ),
               )
-            :  WebView(
-            initialUrl: '',
-            javascriptMode: JavascriptMode.unrestricted,
-            onWebViewCreated: (WebViewController webViewController) async {
-              _controller = webViewController;
-              await loadHtmlFromAssets(
-                  widget.topic.pdf, _controller);
-            },
-          )),
+            :  Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              child: WebView(
+              initialUrl: '',
+              javascriptMode: JavascriptMode.unrestricted,
+              onWebViewCreated: (WebViewController webViewController) async {
+                _controller = webViewController;
+                await loadHtmlFromAssets(
+                    widget.topic.pdf, _controller);
+              },
+          ),
+            )),
     );
   }
 }
