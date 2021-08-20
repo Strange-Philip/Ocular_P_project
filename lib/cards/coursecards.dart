@@ -8,7 +8,12 @@ class Topic {
   final String pdf;
   final Icon icon;
 
-  Topic(this.name, this.time, this.pdf, this.icon);
+  Topic(
+    this.name,
+    this.time,
+    this.pdf,
+    this.icon,
+  );
 }
 
 class CourseCard extends StatefulWidget {
@@ -21,8 +26,6 @@ class CourseCard extends StatefulWidget {
 }
 
 class _CourseCardState extends State<CourseCard> {
-
-
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
@@ -71,7 +74,7 @@ class _CourseCardState extends State<CourseCard> {
                 child: Container(
                   child: Row(
                     children: [
-                      Icon(LineIcons.clock, color: Colors.white,size: 18),
+                      Icon(LineIcons.clock, color: Colors.white, size: 18),
                       SizedBox(
                         width: 5,
                       ),

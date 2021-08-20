@@ -16,10 +16,10 @@ String greetingMessage() {
     return 'Good Morning';
   } else if ((timeNow > 12) && (timeNow <= 18)) {
     return 'Good Afternoon';
-  } else if ((timeNow > 18) && (timeNow < 23)) {
+  } else if ((timeNow > 18) && (timeNow < 22)) {
     return 'Good Evening';
   } else {
-    return 'Sweet dreams';
+    return 'Goodnight';
   }
 }
 
@@ -28,113 +28,125 @@ class _HomeState extends State<Home> {
   String name;
   List<Topic> topics = [
     Topic(
-        'The Eyeball',
-        "2 hrs",
-        'images/pdf/Eyeball.html',
-        Icon(
-          LineIcons.eye,
-          color: Colors.white,
-          size: 28,
-        )),
+      'The Eyeball',
+      "30 mins",
+      'images/pdf/Eyeball.html',
+      Icon(
+        LineIcons.eye,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
     Topic(
-        'The Bony Orbit',
-        "2 hrs 30 mins",
-        'images/pdf/Bony Orbit.html',
-        Icon(
-          LineIcons.brain,
-          color: Colors.white,
-          size: 28,
-        )),
+      'The Bony Orbit',
+      "1 hour",
+      'images/pdf/Bony Orbit.html',
+      Icon(
+        LineIcons.brain,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
     Topic(
-        'Orbital Contents',
-        "2 hrs ",
-        'images/pdf/Orbital Contents.html',
-        Icon(
-          LineIcons.bone,
-          color: Colors.white,
-          size: 28,
-        )),
+      'Orbital Contents',
+      "45 minutes",
+      'images/pdf/Orbital Contents.html',
+      Icon(
+        LineIcons.bone,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
     Topic(
-        'Eyelid',
-        "1 hr 30 mins",
-        'images/pdf/Eyelid.html',
-        Icon(
-          LineIcons.eye,
-          color: Colors.white,
-          size: 28,
-        )),
+      'Eyelid',
+      "45 minutes",
+      'images/pdf/Eyelid.html',
+      Icon(
+        LineIcons.eye,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
     Topic(
-        'Lacrimal System',
-        "2 hrs 30 mins",
-        'images/pdf/Lacrimal System.html',
-        Icon(
-          LineIcons.glasses,
-          color: Colors.white,
-          size: 28,
-        )),
+      'Lacrimal System',
+      "1 hour 30 mins",
+      'images/pdf/Lacrimal System.html',
+      Icon(
+        LineIcons.glasses,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
     Topic(
-        'Cornea And Sclera',
-        "3 hrs 30 mins",
-        'images/pdf/Cornea & Sclera.html',
-        Icon(
-          LineIcons.stethoscope,
-          color: Colors.white,
-          size: 28,
-        )),
+      'Cornea And Sclera',
+      "1 hour",
+      'images/pdf/Cornea & Sclera.html',
+      Icon(
+        LineIcons.stethoscope,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
     Topic(
-        'Aqueous Humour',
-        "2 hrs 30 mins",
-        'images/pdf/Aqueous.html',
-        Icon(
-          LineIcons.water,
-          color: Colors.white,
-          size: 28,
-        )),
-        Topic(
-        'Crystalline Lens',
-        "2 hrs 30 mins",
-        'images/pdf/Crystalline Lens.html',
-        Icon(
-          LineIcons.glasses,
-          color: Colors.white,
-          size: 28,
-        )),
-        Topic(
-        'Extraocular Muscles',
-        "2 hrs 30 mins",
-        'images/pdf/Extraocular Muscles.html',
-        Icon(
-          LineIcons.brain,
-          color: Colors.white,
-          size: 28,
-        )),
-        Topic(
-        'Vitreous Humour',
-        "2 hrs 30 mins",
-        'images/pdf/Vitreous Humor.html',
-        Icon(
-          LineIcons.water,
-          color: Colors.white,
-          size: 28,
-        )),
-        Topic(
-        'Retina',
-        "1 hr 30 mins",
-        'images/pdf/Retina.html',
-        Icon(
-          LineIcons.lowVision,
-          color: Colors.white,
-          size: 28,
-        )),
-        Topic(
-        'Cranial Nerves',
-        "2 hrs 30 mins",
-        'images/pdf/Cranial Nerves.html',
-        Icon(
-          LineIcons.brain,
-          color: Colors.white,
-          size: 28,
-        )),
+      'Aqueous Humour',
+      "2 hours",
+      'images/pdf/Aqueous.html',
+      Icon(
+        LineIcons.water,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
+    Topic(
+      'Crystalline Lens',
+      "1 hour 30 mins",
+      'images/pdf/Crystalline Lens.html',
+      Icon(
+        LineIcons.glasses,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
+    Topic(
+      'Extraocular Muscles',
+      "45 minutes",
+      'images/pdf/Extraocular Muscles.html',
+      Icon(
+        LineIcons.brain,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
+    Topic(
+      'Vitreous Humour',
+      "30 minutes",
+      'images/pdf/Vitreous Humor.html',
+      Icon(
+        LineIcons.water,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
+    Topic(
+      'Retina',
+      "3 hours",
+      'images/pdf/Retina.html',
+      Icon(
+        LineIcons.lowVision,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
+    Topic(
+      'Cranial Nerves',
+      "30 minutes",
+      'images/pdf/Cranial Nerves.html',
+      Icon(
+        LineIcons.brain,
+        color: Colors.white,
+        size: 28,
+      ),
+    ),
   ];
   Future<String> getname() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -188,7 +200,7 @@ class _HomeState extends State<Home> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
               child: Text(
-                greetingMes + ' $name.',
+                greetingMes + ' $name',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Colors.black,

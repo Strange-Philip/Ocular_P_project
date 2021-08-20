@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-
 import 'coursecards.dart';
 
 class ViewHTML extends StatefulWidget {
@@ -16,7 +15,6 @@ class ViewHTML extends StatefulWidget {
 }
 
 class _ViewHTMLState extends State<ViewHTML> {
-  String val;
   WebViewController webViewController;
 
   Future<void> loadHtmlFromAssets(String filename, controller) async {
@@ -74,49 +72,49 @@ class _ViewHTMLState extends State<ViewHTML> {
                     ],
                   ),
                 ),
-          body:widget.topic.pdf == ''
-            ? Center(
-                child: Column(
-                  children: [
-                    Spacer(),
-                    SvgPicture.asset(
-                      'images/books.svg',
-                      width: 200,
-                      height: 150,
-                      fit: BoxFit.cover,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
-                      child: Text(
-                        "Topic not available yet",
-                        maxLines: 5,
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500,
-                            // color: Colors.black,
-                            fontFamily: 'Quicksand'),
+          body: widget.topic.pdf == ''
+              ? Center(
+                  child: Column(
+                    children: [
+                      Spacer(),
+                      SvgPicture.asset(
+                        'images/books.svg',
+                        width: 200,
+                        height: 150,
+                        fit: BoxFit.cover,
                       ),
-                    ),
-                    Spacer(),
-                  ],
-                ),
-              )
-            :  Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15),
-              child: WebView(
-              initialUrl: '',
-              javascriptMode: JavascriptMode.unrestricted,
-              onWebViewCreated: (WebViewController webViewController) async {
-                _controller = webViewController;
-                await loadHtmlFromAssets(
-                    widget.topic.pdf, _controller);
-              },
-          ),
-            )),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 5),
+                        child: Text(
+                          "Topic not available yet",
+                          maxLines: 5,
+                          style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w500,
+                              // color: Colors.black,
+                              fontFamily: 'Quicksand'),
+                        ),
+                      ),
+                      Spacer(),
+                    ],
+                  ),
+                )
+              : Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: WebView(
+                    initialUrl: '',
+                    javascriptMode: JavascriptMode.unrestricted,
+                    onWebViewCreated:
+                        (WebViewController webViewController) async {
+                      _controller = webViewController;
+                      await loadHtmlFromAssets(widget.topic.pdf, _controller);
+                    },
+                  ),
+                )),
     );
   }
 }

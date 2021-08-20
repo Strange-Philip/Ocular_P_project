@@ -12,9 +12,9 @@ class Flash extends StatelessWidget {
     return FlipCard(
       direction: FlipDirection.HORIZONTAL,
       front: Container(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         height: 400,
-        width: 250,
+        width: double.infinity,
         decoration: BoxDecoration(
           color: Color(0xFF4354b3).withOpacity(0.9),
           borderRadius: BorderRadius.circular(12),
@@ -32,9 +32,9 @@ class Flash extends StatelessWidget {
         ),
       ),
       back: Container(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         height: 400,
-        width: 250,
+        width: double.infinity,
         decoration: BoxDecoration(
           color: Color(0xFF4354b3).withOpacity(0.9),
           borderRadius: BorderRadius.circular(12),
@@ -46,6 +46,7 @@ class Flash extends StatelessWidget {
               fontFamily: 'Quicksand',
               fontSize: 15,
               color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
