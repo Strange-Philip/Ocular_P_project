@@ -60,7 +60,6 @@ class _SetttingsState extends State<Setttings> {
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
               child: GFCarousel(
                 autoPlay: true,
-                pagination: true,
                 passiveIndicator: Colors.white,
                 items: [
                   Padding(

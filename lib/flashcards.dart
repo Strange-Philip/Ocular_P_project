@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'cards/flashcard.dart ';
+import 'cards/flashcard.dart';
 
 class FlashCard {
   final String frontText;
